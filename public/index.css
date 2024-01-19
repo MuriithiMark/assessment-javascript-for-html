@@ -34,5 +34,35 @@ body {
 .card .card-footer .title {
   font-weight: 700;
 }
+.card .card-footer .btn {
+  width: 30%;
+  height: 40px;
+  background-color: blue;
+  color: white;
+  font-weight: 700;
+}
+
+@media only screen and (min-width: 768px) {
+  #root {
+    display: flex;
+    flex-flow: wrap;
+  }
+  .card {
+    width: 45%;
+    margin: 2%;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  #root {
+    display: flex;
+    flex-flow: wrap;
+    align-items: center;
+    gap: 4%;
+  }
+  .card {
+    width: 25%;
+    margin: 2%;
+  }
+}
 
 /*# sourceMappingURL=index.css.map */
