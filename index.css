@@ -7,23 +7,32 @@ body {
 
 #root {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2%;
 }
-#root .card {
+
+.card {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 4%;
 }
-#root .card img {
+.card img {
   width: 100%;
-  height: 30%;
+  height: 300px;
 }
-#root .card .footer {
+.card .card-footer {
   width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border: 1px solid blue;
+}
+.card .card-footer .title {
+  font-weight: 700;
 }
 
 /*# sourceMappingURL=index.css.map */

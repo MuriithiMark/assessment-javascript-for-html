@@ -20,6 +20,7 @@ const createCardFooter = async ({ title, date, company, price }) => {
     cardFooterElement.classList.add("card-footer");
 
     let titleElement = document.createElement("span");
+    titleElement.classList.add("title");
     titleElement.innerText = title;
 
     let dateElement = document.createElement("span");
@@ -29,7 +30,7 @@ const createCardFooter = async ({ title, date, company, price }) => {
     companyElement.innerText = company;
 
     let priceElement = document.createElement("span")
-    priceElement.innerText = price;
+    priceElement.innerText = `Ksh ${price}`;
 
     const buttonElement = await createBuyNowButton()
 
