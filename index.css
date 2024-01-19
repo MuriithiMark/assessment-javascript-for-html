@@ -1,0 +1,29 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  width: 100%;
+}
+#root .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 4%;
+}
+#root .card img {
+  width: 100%;
+  height: 30%;
+}
+#root .card .footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid blue;
+}
+
+/*# sourceMappingURL=index.css.map */
