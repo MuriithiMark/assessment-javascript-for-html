@@ -5,27 +5,61 @@ const fetchData = async () => {
     return data;
 }
 
-const writeCardItem = async (item) => {
-    let cardElement = document.createElement("div");
-    cardElement.classList.add("card");
+const createBuyNowButton = async () => {
+    const buttonElement = document.createElement("button");
+    buttonElement.innerText = "Buy Now";
+    buttonElement.classList.add("btn", "buy-now");
 
-    let imgElement = document.createElement("img");
-    imgElement.src = item.imageUrl;
+    buttonElement.addEventListener("click", () => console.log("Button Clicked!"));
+
+    return buttonElement;
+}
+
+const createCardFooter = async ({ title, date, company, price }) => {
+    let cardFooterElement = document.createElement("div");
+    cardFooterElement.classList.add("card-footer");
 
     let titleElement = document.createElement("span");
-    titleElement.innerText = item.title;
+    titleElement.innerText = title;
 
     let dateElement = document.createElement("span");
-    dateElement.innerText = item.date;
+    dateElement.innerText = date;
 
     let companyElement = document.createElement("span");
-    companyElement.innerText = item.company;
+    companyElement.innerText = company;
 
     let priceElement = document.createElement("span")
-    priceElement.innerText = item.price;
+    priceElement.innerText = price;
+
+    const buttonElement = await createBuyNowButton()
+
+    const cardFooterElements = [
+        titleElement, dateElement, companyElement, priceElement, buttonElement
+    ];
+    cardFooterElement.append(...cardFooterElements);
+
+    return cardFooterElement;
+}
+
+const writeCardItem = async (item) => {
+    const cardElement = document.createElement("div");
+    cardElement.id = item.id;
+    cardElement.classList.add("card");
+
+    const imgElement = document.createElement("img");
+    imgElement.src = item.imageUrl;
+
+    const cardFooterObj = {
+        title: item.title,
+        date: item.date,
+        company: item.company,
+        price: item.price, 
+    }
+
+    const cardFooterElement = await createCardFooter(cardFooterObj);
 
     const cardElements = [
-        imgElement, titleElement, dateElement, companyElement, priceElement
+        imgElement, cardFooterElement
     ];
 
     cardElement.append(...cardElements);
@@ -34,14 +68,12 @@ const writeCardItem = async (item) => {
 }
 
 const addBodyContent = async () => {
-    const data =  await fetchData();
+    const data = await fetchData();
     const rootElement = document.getElementById("root");
     data.forEach(async (item) => {
-        console.log(item)
         const cardElement = await writeCardItem(item);
         rootElement.appendChild(cardElement);
     });
 }
 
 addBodyContent();
-console.log(data)
